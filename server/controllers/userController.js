@@ -103,7 +103,7 @@ const userController = {
         );
         }
     },
-    
+
     // Obtener usuario por ID
     async obtenerPorId(req, res) {
         try {
@@ -155,8 +155,26 @@ const userController = {
         );
         }
     },
+    // Eliminar usuario
+    async eliminar(req, res) {
+        try {
+        const usuario = await User.findByIdAndDelete(req.params.id);
+        if (!usuario) {
+            return res.status(404).json(
+            formatResponse(404, 'Usuario no encontrado')
+            );
+        }
 
-
+        res.json(
+            formatResponse(200, 'Usuario eliminado exitosamente')
+        );
+        } catch (error) {
+        logger.error('Error al eliminar usuario:', error);
+        res.status(500).json(
+            formatResponse(500, 'Error al eliminar usuario')
+        );
+        }
+    },
     // Validar sesión
     async validarSesion(req, res) {
         try {

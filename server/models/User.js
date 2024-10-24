@@ -39,4 +39,22 @@ const userSchema = new mongoose.Schema({
   timestamps: true
 });
 
+// Encriptar contraseña antes de guardar
+userSchema.pre('save', async function(next) {
+  if (!this.isModified('contrasena_hash')) return next();
+  
+  try {
+    const salt = await bcrypt.genSalt(10);
+    this.contrasena_hash = await bcrypt.hash(this.contrasena_hash, salt);
+    next();
+  } catch (error) {
+    next(error);
+  }
+});
+
+// Método para comparar contraseñas
+userSchema.methods.compararContrasena = async function(contrasena) {
+  return await bcrypt.compare(contrasena, this.contrasena_hash);
+};
+
 module.exports = mongoose.model('User', userSchema);
