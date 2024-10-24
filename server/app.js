@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 //my files
 const {connection} = require('./infrastructure/db');
+const logger = require('./utils/logger');
 //load envs
 process.loadEnvFile();
 //import routes
@@ -15,6 +16,7 @@ const app = express();
 //middlewares
 app.use(cors());
 app.use(express.json());
+app.use(logger.expressMiddleware);
 
 // Routes
 app.use('/api/usuarios', userRoutes);

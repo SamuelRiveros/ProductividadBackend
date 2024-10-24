@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const { formatResponse } = require('../utils/responseFormatter');
+const logger = require('../utils/logger');
 
 const userController = {
   // Crear usuario
@@ -32,6 +33,7 @@ const userController = {
         formatResponse(201, 'Usuario creado exitosamente', usuarioResponse)
       );
     } catch (error) {
+        logger.error('Error al crear usuario:', error);
       res.status(500).json(
         formatResponse(500, 'Error al crear usuario')
       );
@@ -196,3 +198,5 @@ const userController = {
         }
     },
 }
+
+module.exports = userController;
