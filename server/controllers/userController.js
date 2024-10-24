@@ -87,5 +87,94 @@ const userController = {
             formatResponse(500, 'Error en el inicio de sesión')
           );
         }
-      }
+      },
+
+    // Obtener todos los usuarios
+    async obtenerTodos(req, res) {
+        try {
+        const usuarios = await User.find().select('-contrasena_hash');
+        res.json(
+            formatResponse(200, 'Usuarios obtenidos exitosamente', usuarios)
+        );
+        } catch (error) {
+        logger.error('Error al obtener usuarios:', error);
+        res.status(500).json(
+            formatResponse(500, 'Error al obtener usuarios')
+        );
+        }
+    },
+    
+    // Obtener usuario por ID
+    async obtenerPorId(req, res) {
+        try {
+        const usuario = await User.findById(req.params.id).select('-contrasena_hash');
+        if (!usuario) {
+            return res.status(404).json(
+            formatResponse(404, 'Usuario no encontrado')
+            );
+        }
+
+        res.json(
+            formatResponse(200, 'Usuario obtenido exitosamente', usuario)
+        );
+        } catch (error) {
+        logger.error('Error al obtener usuario:', error);
+        res.status(500).json(
+            formatResponse(500, 'Error al obtener usuario')
+        );
+        }
+    },
+    // Actualizar usuario
+    async actualizar(req, res) {
+        try {
+        const { nombre, apellido, email } = req.body;
+        
+        const usuario = await User.findById(req.params.id);
+        if (!usuario) {
+            return res.status(404).json(
+            formatResponse(404, 'Usuario no encontrado')
+            );
+        }
+
+        usuario.nombre = nombre || usuario.nombre;
+        usuario.apellido = apellido || usuario.apellido;
+        usuario.email = email || usuario.email;
+
+        await usuario.save();
+
+        const usuarioResponse = usuario.toObject();
+        delete usuarioResponse.contrasena_hash;
+
+        res.json(
+            formatResponse(200, 'Usuario actualizado exitosamente', usuarioResponse)
+        );
+        } catch (error) {
+        logger.error('Error al actualizar usuario:', error);
+        res.status(500).json(
+            formatResponse(500, 'Error al actualizar usuario')
+        );
+        }
+    },
+
+
+    // Validar sesión
+    async validarSesion(req, res) {
+        try {
+        const usuario = await User.findById(req.user.id).select('-contrasena_hash');
+        if (!usuario) {
+            return res.status(404).json(
+            formatResponse(404, 'Usuario no encontrado')
+            );
+        }
+
+        res.json(
+            formatResponse(200, 'Sesión válida', usuario)
+        );
+        } catch (error) {
+        logger.error('Error al validar sesión:', error);
+        res.status(500).json(
+            formatResponse(500, 'Error al validar sesión')
+        );
+        }
+    },
 }
