@@ -1,0 +1,50 @@
+###
+POST http://localhost:3000/api/usuarios/
+Content-Type: application/json
+
+{
+  "nombre": "Samuel",
+  "apellido": "Riveros",
+  "email": "wixi1@ejemplo.com",
+  "contrasena": "contraseña123"
+}
+
+###
+POST http://localhost:3000/api/usuarios/iniciarSesion
+Content-Type: application/json
+
+{
+  "email": "sam@ejemplo.com",
+  "contrasena": "contraseña123"
+}
+
+###
+GET http://localhost:3000/api/usuarios/validarSesion 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MTk5YTE3ZjE1NDcwNzNkNTQyNWExYyIsImlhdCI6MTcyOTczMTY3OCwiZXhwIjoxNzI5NzMzNDc4fQ.MVzKqA8MSygGmlBFRV4LbrQqy2eoeThIRJYeqDD4N1c
+Content-Type: application/json
+
+###
+GET http://localhost:3000/api/usuarios/
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MTk5YTE3ZjE1NDcwNzNkNTQyNWExYyIsImlhdCI6MTcyOTczMTY3OCwiZXhwIjoxNzI5NzMzNDc4fQ.MVzKqA8MSygGmlBFRV4LbrQqy2eoeThIRJYeqDD4N1c
+Content-Type: application/json
+
+###
+GET http://localhost:3000/api/usuarios/67199a17f1547073d5425a1c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MTk5YTE3ZjE1NDcwNzNkNTQyNWExYyIsImlhdCI6MTcyOTczMTY3OCwiZXhwIjoxNzI5NzMzNDc4fQ.MVzKqA8MSygGmlBFRV4LbrQqy2eoeThIRJYeqDD4N1c
+Content-Type: application/json
+
+###
+PUT http://localhost:3000/api/usuarios/67199a17f1547073d5425a1c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MTk5YTE3ZjE1NDcwNzNkNTQyNWExYyIsImlhdCI6MTcyOTczMTY3OCwiZXhwIjoxNzI5NzMzNDc4fQ.MVzKqA8MSygGmlBFRV4LbrQqy2eoeThIRJYeqDD4N1c
+Content-Type: application/json
+
+{
+  "nombre": "Samuel1",
+  "apellido": "Riveross",
+  "email": "sam1@ejemplo.com"
+}
+
+###
+DELETE http://localhost:3000/api/usuarios/67199a17f1547073d5425a1c
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MTk5YTE3ZjE1NDcwNzNkNTQyNWExYyIsImlhdCI6MTcyOTczMTY3OCwiZXhwIjoxNzI5NzMzNDc4fQ.MVzKqA8MSygGmlBFRV4LbrQqy2eoeThIRJYeqDD4N1c
+Content-Type: application/json
