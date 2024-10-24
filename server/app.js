@@ -6,8 +6,11 @@ const {connection} = require('./infrastructure/db');
 const logger = require('./utils/logger');
 //load envs
 process.loadEnvFile();
-//import routes
+
+//*Importamos las rutas respectivas para el uso de todos los endpoints
 const userRoutes = require('./routes/userRoutes');
+
+// const activityRoutes = require("./routes/activityRoutes")
 
 //dbConnection
 connection();
@@ -20,6 +23,7 @@ app.use(logger.expressMiddleware);
 
 // Routes
 app.use('/api/usuarios', userRoutes);
+// app.use('/api/actividades', activityRoutes);
 
 //start server
 
