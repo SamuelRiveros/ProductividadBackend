@@ -43,7 +43,7 @@ Muchas personas, tanto en su vida personal como profesional, enfrentan dificulta
    
 5. **Prioridades y Recordatorios**:
    - Sistema de prioridades para que el usuario pueda marcar actividades como "alta", "media" o "baja" prioridad.
-   - Opción para configurar recordatorios o notificaciones sobre actividades pendientes, con alertas programadas.
+   - Opción para configurar recordatorios sobre actividades pendientes, con alertas programadas.
    
 6. **Visualización y Reportes**:
    - Generación de reportes que muestren el rendimiento del usuario en completar sus actividades a lo largo de una semana o mes.

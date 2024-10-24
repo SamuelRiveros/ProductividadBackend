@@ -1,5 +1,4 @@
 const Activity = require('../models/Activity');
-const jwt = require('jsonwebtoken');
 const { formatResponse } = require('../utils/responseFormatter');
 const logger = require('../utils/logger');
 
@@ -9,7 +8,7 @@ const activityController = {
         try {
             const { tipo, nombre, descripción, prioridad, fecha, duracion } = req.body
 
-            const actividadSchema = new Actividad({
+            const actividadSchema = new Activity({
                 tipo,
                 nombre,
                 descripción,
