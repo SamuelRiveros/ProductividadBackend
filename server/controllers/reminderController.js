@@ -1,5 +1,5 @@
 const Reminder = require('../models/reminderModel');
-const { formatResponse } = require('../utils/formatResponse');
+const { formatResponse } = require('../utils/responseFormatter');
 
 const reminderController = {
   // Crear recordatorio
@@ -60,7 +60,50 @@ const reminderController = {
       );
     }
   },
-
+    // Actualizar un recordatorio específico por ID
+    async actualizar(req, res) {
+        try {
+          const { mensaje, fecha, actividadId } = req.body;
+          const recordatorioActualizado = await Reminder.findByIdAndUpdate(
+            req.params.id,
+            { mensaje, fecha, actividadId },
+            { new: true, runValidators: true }
+          );
+          if (!recordatorioActualizado) {
+            return res.status(404).json(
+              formatResponse(404, 'Recordatorio no encontrado')
+            );
+          }
+          res.json(
+            formatResponse(200, 'Recordatorio actualizado exitosamente', recordatorioActualizado)
+          );
+        } catch (error) {
+          logger.error('Error al actualizar recordatorio:', error);
+          res.status(500).json(
+            formatResponse(500, 'Error al actualizar recordatorio')
+          );
+        }
+      },
+    
+      // Eliminar un recordatorio específico por ID
+      async eliminar(req, res) {
+        try {
+          const recordatorio = await Reminder.findByIdAndDelete(req.params.id);
+          if (!recordatorio) {
+            return res.status(404).json(
+              formatResponse(404, 'Recordatorio no encontrado')
+            );
+          }
+          res.json(
+            formatResponse(200, 'Recordatorio eliminado exitosamente')
+          );
+        } catch (error) {
+          logger.error('Error al eliminar recordatorio:', error);
+          res.status(500).json(
+            formatResponse(500, 'Error al eliminar recordatorio')
+          );
+        }
+      }
 
 };
 

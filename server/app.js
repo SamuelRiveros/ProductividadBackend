@@ -10,6 +10,8 @@ process.loadEnvFile();
 //*Importamos las rutas respectivas para el uso de todos los endpoints
 const userRoutes = require('./routes/userRoutes');
 
+const reminderRoutes = require("./routes/reminderRoutes")
+
 // const activityRoutes = require("./routes/activityRoutes")
 
 //dbConnection
@@ -23,6 +25,7 @@ app.use(logger.expressMiddleware);
 
 // Routes
 app.use('/api/usuarios', userRoutes);
+app.use('/api/recordatorios', reminderRoutes)
 // app.use('/api/actividades', activityRoutes);
 
 //start server

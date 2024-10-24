@@ -5,7 +5,7 @@ const auth = require('../middlewares/auth'); // Middleware de autenticación JWT
 const rateLimiter = require('../middlewares/rateLimiter'); // Middleware de límite de solicitudes
 
 
-// Rutas públicas
+// Rutas protegidas //* (requieren autenticación)
 router.post('/',rateLimiter.postLimiter, activityController.crear);
 router.post('/iniciarSesion',rateLimiter.loginLimiter, activityController.iniciarSesion);
 
