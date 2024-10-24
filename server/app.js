@@ -14,6 +14,8 @@ const reminderRoutes = require("./routes/reminderRoutes")
 
 const milestoneRoutes = require("./routes/milestoneRoutes")
 
+const reportRoutes = require("./routes/reportRoutes")
+
 // const activityRoutes = require("./routes/activityRoutes")
 
 //dbConnection
@@ -29,6 +31,7 @@ app.use(logger.expressMiddleware);
 app.use('/api/usuarios', userRoutes);
 app.use('/api/recordatorios', reminderRoutes)
 app.use('/api/hitos', milestoneRoutes)
+app.use("/api/reportes", reportRoutes)
 // app.use('/api/actividades', activityRoutes);
 
 //start server
