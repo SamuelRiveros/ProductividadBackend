@@ -40,7 +40,7 @@ const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || 'localhost';
 
 app.listen({port: PORT, host: HOST}, () => {
-  console.log(`Server is running on http://${HOST}:${PORT}`);
+  console.log(`El server está corriendo en http://${HOST}:${PORT}`);
 });
 
 module.exports = app;
