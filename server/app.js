@@ -16,7 +16,7 @@ const milestoneRoutes = require("./routes/milestoneRoutes")
 
 const reportRoutes = require("./routes/reportRoutes")
 
-// const activityRoutes = require("./routes/activityRoutes")
+const activityRoutes = require("./routes/activityRoutes")
 
 //dbConnection
 connection();
@@ -32,7 +32,7 @@ app.use('/api/usuarios', userRoutes);
 app.use('/api/recordatorios', reminderRoutes)
 app.use('/api/hitos', milestoneRoutes)
 app.use("/api/reportes", reportRoutes)
-// app.use('/api/actividades', activityRoutes);
+app.use('/api/actividades', activityRoutes);
 
 //start server
 

@@ -35,7 +35,7 @@ A continuación, se presenta la documentación de los endpoints de la API para l
 | `nombre`          | `string` | Nombre del usuario           |
 | `apellido`        | `string` | Apellido del usuario         |
 | `email`           | `email`  | Correo electrónico           |
-| `contrasena_hash` | `string` | Contraseña encriptada       |
+| `contrasena` | `string` | Contraseña encriptada       |
 
 ---
 
@@ -124,5 +124,177 @@ A continuación, se presenta la documentación de los endpoints de la API para l
 #### Parámetros:
 
 - `id`: ID del usuario a eliminar.
+
+---
+
+### 2. Actividades
+
+## APIs
+
+A continuación, se presenta la documentación de los endpoints de la API para la gestión de actividades.
+
+### 1. Actividades
+
+#### Crear Actividad
+
+- **Método:** `POST`
+- **Endpoint:** `/api/actividades`
+- **Descripción:** Crea una nueva actividad.
+
+#### Campos para el Body:
+
+| Campo               | Tipo       | Descripción                              |
+|---------------------|------------|------------------------------------------|
+| `titulo`            | `string`   | Título de la actividad (requerido)     |
+| `descripcion`       | `string`   | Descripción de la actividad (opcional)  |
+| `estado`            | `string`   | Estado de la actividad (opcional; valores: `pendiente`, `en_curso`, `completada`; por defecto: `pendiente`) |
+| `prioridad`         | `string`   | Prioridad de la actividad (opcional; valores: `baja`, `media`, `alta`; por defecto: `media`) |
+| `fecha_inicio`      | `date`     | Fecha de inicio (requerida)            |
+| `fecha_fin`         | `date`     | Fecha de fin (opcional)                 |
+| `duracion_estimada` | `number`   | Duración estimada en minutos (requerido) |
+| `categoria`         | `ObjectId` | ID de la categoría (opcional)           |
+| `etiquetas`         | `Array<ObjectId>` | IDs de las etiquetas (opcional)  |
+| `colaboradores`     | `Array<ObjectId>` | IDs de los colaboradores (opcional) |
+
+---
+
+#### Obtener Todas las Actividades
+
+- **Método:** `GET`
+- **Endpoint:** `/api/actividades`
+- **Descripción:** Obtiene todas las actividades del usuario autenticado.
+
+#### Respuesta:
+
+- Retorna una lista de actividades del usuario.
+
+---
+
+#### Obtener Actividad por ID
+
+- **Método:** `GET`
+- **Endpoint:** `/api/actividades/{id}`
+- **Descripción:** Obtiene una actividad específica por su ID.
+
+#### Parámetros:
+
+- `id`: ID de la actividad a obtener.
+
+---
+
+#### Actualizar Actividad
+
+- **Método:** `PUT`
+- **Endpoint:** `/api/actividades/{id}`
+- **Descripción:** Actualiza una actividad específica por su ID.
+
+#### Campos para el Body:
+
+| Campo               | Tipo       | Descripción                              |
+|---------------------|------------|------------------------------------------|
+| `titulo`            | `string`   | Título de la actividad (opcional)       |
+| `descripcion`       | `string`   | Descripción de la actividad (opcional)  |
+| `estado`            | `string`   | Estado de la actividad (opcional)       |
+| `prioridad`         | `string`   | Prioridad de la actividad (opcional)    |
+| `fecha_inicio`      | `date`     | Fecha de inicio (opcional)              |
+| `fecha_fin`         | `date`     | Fecha de fin (opcional)                 |
+| `duracion_estimada` | `number`   | Duración estimada en minutos (opcional) |
+| `categoria`         | `ObjectId` | ID de la categoría (opcional)           |
+| `etiquetas`         | `Array<ObjectId>` | IDs de las etiquetas (opcional)  |
+| `colaboradores`     | `Array<ObjectId>` | IDs de los colaboradores (opcional) |
+
+#### Parámetros:
+
+- `id`: ID de la actividad a actualizar.
+
+---
+
+#### Eliminar Actividad
+
+- **Método:** `DELETE`
+- **Endpoint:** `/api/actividades/{id}`
+- **Descripción:** Elimina una actividad específica por su ID.
+
+#### Parámetros:
+
+- `id`: ID de la actividad a eliminar.
+
+---
+
+### 2.Recordatorios
+
+## APIs
+
+A continuación, se presenta la documentación de los endpoints de la API para la gestión de recordatorios.
+
+#### Crear Recordatorio
+
+- **Método:** `POST`
+- **Endpoint:** `/api/recordatorios`
+- **Descripción:** Crea un nuevo recordatorio.
+
+#### Campos para el Body:
+
+| Campo         | Tipo       | Descripción                                      |
+|---------------|------------|--------------------------------------------------|
+| `mensaje`     | `string`   | Mensaje del recordatorio (requerido)            |
+| `fecha`       | `date`     | Fecha del recordatorio (requerido)              |
+| `actividadId` | `ObjectId` | ID de la actividad asociada (opcional)          |
+
+---
+
+#### Obtener Todos los Recordatorios
+
+- **Método:** `GET`
+- **Endpoint:** `/api/recordatorios`
+- **Descripción:** Obtiene todos los recordatorios del usuario autenticado.
+
+#### Respuesta:
+
+- Retorna una lista de recordatorios del usuario.
+
+---
+
+#### Obtener Recordatorio por ID
+
+- **Método:** `GET`
+- **Endpoint:** `/api/recordatorios/{id}`
+- **Descripción:** Obtiene un recordatorio específico por su ID.
+
+#### Parámetros:
+
+- `id`: ID del recordatorio a obtener.
+
+---
+
+#### Actualizar Recordatorio
+
+- **Método:** `PUT`
+- **Endpoint:** `/api/recordatorios/{id}`
+- **Descripción:** Actualiza un recordatorio específico por su ID.
+
+#### Campos para el Body:
+
+| Campo         | Tipo       | Descripción                                      |
+|---------------|------------|--------------------------------------------------|
+| `mensaje`     | `string`   | Mensaje del recordatorio (opcional)              |
+| `fecha`       | `date`     | Fecha del recordatorio (opcional)                |
+| `actividadId` | `ObjectId` | ID de la actividad asociada (opcional)          |
+
+#### Parámetros:
+
+- `id`: ID del recordatorio a actualizar.
+
+---
+
+#### Eliminar Recordatorio
+
+- **Método:** `DELETE`
+- **Endpoint:** `/api/recordatorios/{id}`
+- **Descripción:** Elimina un recordatorio específico por su ID.
+
+#### Parámetros:
+
+- `id`: ID del recordatorio a eliminar.
 
 ---
