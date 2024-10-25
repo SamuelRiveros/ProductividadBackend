@@ -129,11 +129,7 @@ A continuación, se presenta la documentación de los endpoints de la API para l
 
 ### 2. Actividades
 
-## APIs
-
 A continuación, se presenta la documentación de los endpoints de la API para la gestión de actividades.
-
-### 1. Actividades
 
 #### Crear Actividad
 
@@ -221,7 +217,7 @@ A continuación, se presenta la documentación de los endpoints de la API para l
 
 ---
 
-### 2.Recordatorios
+### 3. Recordatorios
 
 ## APIs
 
