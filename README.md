@@ -299,6 +299,80 @@ A continuación, se presenta la documentación de los endpoints de la API para l
 
 ---
 
+### 4. Objetivos :
+
+#### Crear Objetivo
+
+- **Método:** `POST`
+- **Endpoint:** `/api/objetivos`
+- **Descripción:** Crea un nuevo objetivo.
+
+#### Campos para el Body:
+
+| Campo              | Tipo       | Descripción                                      |
+|--------------------|------------|--------------------------------------------------|
+| `titulo`           | `string`   | Título del objetivo (requerido)                 |
+| `descripcion`      | `string`   | Descripción del objetivo (opcional)              |
+| `fechaEstablecida` | `date`     | Fecha establecida para el objetivo (requerido)  |
+
+---
+
+#### Obtener Todos los Objetivos
+
+- **Método:** `GET`
+- **Endpoint:** `/api/objetivos`
+- **Descripción:** Obtiene todos los objetivos del usuario autenticado.
+
+#### Respuesta:
+
+- Retorna una lista de objetivos del usuario.
+
+---
+
+#### Obtener Objetivo por ID
+
+- **Método:** `GET`
+- **Endpoint:** `/api/objetivos/{id}`
+- **Descripción:** Obtiene un objetivo específico por su ID.
+
+#### Parámetros:
+
+- `id`: ID del objetivo a obtener.
+
+---
+
+#### Actualizar Objetivo
+
+- **Método:** `PUT`
+- **Endpoint:** `/api/objetivos/{id}`
+- **Descripción:** Actualiza un objetivo específico por su ID.
+
+#### Campos para el Body:
+
+| Campo              | Tipo       | Descripción                                      |
+|--------------------|------------|--------------------------------------------------|
+| `titulo`           | `string`   | Nuevo título del objetivo (opcional)             |
+| `descripcion`      | `string`   | Nueva descripción del objetivo (opcional)        |
+| `fechaEstablecida` | `date`     | Nueva fecha establecida para el objetivo (opcional) |
+
+#### Parámetros:
+
+- `id`: ID del objetivo a actualizar.
+
+---
+
+#### Eliminar Objetivo
+
+- **Método:** `DELETE`
+- **Endpoint:** `/api/objetivos/{id}`
+- **Descripción:** Elimina un objetivo específico por su ID.
+
+#### Parámetros:
+
+- `id`: ID del objetivo a eliminar.
+
+---
+
 ### 7. hitos :
 
 A continuación, se presenta la documentación de los endpoints de la API para la gestión de hitos.
