@@ -18,6 +18,8 @@ const reportRoutes = require("./routes/reportRoutes")
 
 const activityRoutes = require("./routes/activityRoutes")
 
+const objetivoRoutes = require("./routes/objetivosRoutes")
+
 //dbConnection
 connection();
 const app = express();
@@ -33,6 +35,7 @@ app.use('/api/recordatorios', reminderRoutes)
 app.use('/api/hitos', milestoneRoutes)
 app.use("/api/reportes", reportRoutes)
 app.use('/api/actividades', activityRoutes);
+app.use("/api/objetivos", objetivoRoutes)
 
 //start server
 
