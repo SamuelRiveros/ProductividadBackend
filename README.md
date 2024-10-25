@@ -298,3 +298,160 @@ A continuación, se presenta la documentación de los endpoints de la API para l
 - `id`: ID del recordatorio a eliminar.
 
 ---
+
+### 7. hitos :
+
+A continuación, se presenta la documentación de los endpoints de la API para la gestión de hitos.
+
+#### Crear Hito
+
+- **Método:** `POST`
+- **Endpoint:** `/api/hitos`
+- **Descripción:** Crea un nuevo hito para un objetivo.
+
+#### Campos para el Body:
+
+| Campo            | Tipo       | Descripción                                      |
+|------------------|------------|--------------------------------------------------|
+| `descripcion`    | `string`   | Descripción del hito (requerido)                |
+| `objetivo`       | `string`   | Objetivo asociado al hito (requerido)           |
+| `fechaEstablecida`| `date`    | Fecha en que se establece el hito (requerido)  |
+
+---
+
+#### Obtener Todos los Hitos
+
+- **Método:** `GET`
+- **Endpoint:** `/api/hitos`
+- **Descripción:** Obtiene todos los hitos del usuario autenticado.
+
+#### Respuesta:
+
+- Retorna una lista de hitos del usuario.
+
+---
+
+#### Obtener Hito por ID
+
+- **Método:** `GET`
+- **Endpoint:** `/api/hitos/{id}`
+- **Descripción:** Obtiene un hito específico por su ID.
+
+#### Parámetros:
+
+- `id`: ID del hito a obtener.
+
+---
+
+#### Actualizar Hito
+
+- **Método:** `PUT`
+- **Endpoint:** `/api/hitos/{id}`
+- **Descripción:** Actualiza un hito específico por su ID.
+
+#### Campos para el Body:
+
+| Campo              | Tipo       | Descripción                                      |
+|--------------------|------------|--------------------------------------------------|
+| `descripcion`      | `string`   | Descripción del hito (opcional)                  |
+| `objetivo`         | `string`   | Objetivo asociado al hito (opcional)             |
+| `fechaEstablecida` | `date`     | Fecha en que se establece el hito (opcional)    |
+| `fechaCumplimiento`| `date`     | Fecha en que se cumplió el hito (opcional)      |
+| `logrado`          | `boolean`  | Indica si el hito fue logrado (opcional)        |
+
+#### Parámetros:
+
+- `id`: ID del hito a actualizar.
+
+---
+
+#### Eliminar Hito
+
+- **Método:** `DELETE`
+- **Endpoint:** `/api/hitos/{id}`
+- **Descripción:** Elimina un hito específico por su ID.
+
+#### Parámetros:
+
+- `id`: ID del hito a eliminar.
+
+---
+
+
+### 9. Reportes : 
+
+#### Crear Reporte
+
+- **Método:** `POST`
+- **Endpoint:** `/api/reportes`
+- **Descripción:** Crea un nuevo reporte de rendimiento.
+
+#### Campos para el Body:
+
+| Campo         | Tipo       | Descripción                                      |
+|---------------|------------|--------------------------------------------------|
+| `periodo`     | `string`   | Periodo del reporte (requerido) [diario, semanal, mensual] |
+| `actividades` | `array`    | Lista de actividades con los siguientes campos:   |
+|                |            | - `actividadId`: ID de la actividad (requerido) |
+|                |            | - `tiempoDedicado`: Tiempo dedicado en minutos (requerido) |
+|                |            | - `completado`: Indica si la actividad fue completada (opcional) |
+
+---
+
+#### Obtener Todos los Reportes
+
+- **Método:** `GET`
+- **Endpoint:** `/api/reportes`
+- **Descripción:** Obtiene todos los reportes de rendimiento del usuario autenticado.
+
+#### Respuesta:
+
+- Retorna una lista de reportes del usuario.
+
+---
+
+#### Obtener Reporte por ID
+
+- **Método:** `GET`
+- **Endpoint:** `/api/reportes/{id}`
+- **Descripción:** Obtiene un reporte específico por su ID.
+
+#### Parámetros:
+
+- `id`: ID del reporte a obtener.
+
+---
+
+#### Actualizar Reporte
+
+- **Método:** `PUT`
+- **Endpoint:** `/api/reportes/{id}`
+- **Descripción:** Actualiza un reporte específico por su ID.
+
+#### Campos para el Body:
+
+| Campo         | Tipo       | Descripción                                      |
+|---------------|------------|--------------------------------------------------|
+| `periodo`     | `string`   | Periodo del reporte (opcional) [diario, semanal, mensual] |
+| `actividades` | `array`    | Lista de actividades con los siguientes campos:   |
+|                |            | - `actividadId`: ID de la actividad (opcional)   |
+|                |            | - `tiempoDedicado`: Tiempo dedicado en minutos (opcional) |
+|                |            | - `completado`: Indica si la actividad fue completada (opcional) |
+
+#### Parámetros:
+
+- `id`: ID del reporte a actualizar.
+
+---
+
+#### Eliminar Reporte
+
+- **Método:** `DELETE`
+- **Endpoint:** `/api/reportes/{id}`
+- **Descripción:** Elimina un reporte específico por su ID.
+
+#### Parámetros:
+
+- `id`: ID del reporte a eliminar.
+
+---
