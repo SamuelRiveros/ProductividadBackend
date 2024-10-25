@@ -451,6 +451,80 @@ A continuación, se presenta la documentación de los endpoints de la API para l
 
 ---
 
+### 5. Etiquetas
+
+Funcionalidad para agregar etiquetas personalizadas a las actividades, facilitando su organización y búsqueda.
+
+#### Crear Etiqueta
+
+- **Método:** `POST`
+- **Endpoint:** `/etiquetas`
+- **Descripción:** Crea una nueva etiqueta personalizada.
+
+#### Campos para el Body:
+
+| Campo   | Tipo     | Descripción                          |
+|---------|----------|--------------------------------------|
+| `nombre`| `string` | Nombre de la etiqueta (requerido)   |
+| `color` | `string` | Color de la etiqueta (opcional, por defecto: `#000000`) |
+
+---
+
+#### Obtener Todas las Etiquetas
+
+- **Método:** `GET`
+- **Endpoint:** `/etiquetas`
+- **Descripción:** Obtiene todas las etiquetas personalizadas del usuario autenticado.
+
+#### Respuesta:
+
+- Retorna una lista de etiquetas del usuario.
+
+---
+
+#### Obtener Etiqueta por ID
+
+- **Método:** `GET`
+- **Endpoint:** `/etiquetas/{id}`
+- **Descripción:** Obtiene una etiqueta específica por su ID.
+
+#### Parámetros:
+
+- `id`: ID de la etiqueta a obtener.
+
+---
+
+#### Actualizar Etiqueta
+
+- **Método:** `PUT`
+- **Endpoint:** `/etiquetas/{id}`
+- **Descripción:** Actualiza una etiqueta específica por su ID.
+
+#### Campos para el Body:
+
+| Campo   | Tipo     | Descripción                          |
+|---------|----------|--------------------------------------|
+| `nombre`| `string` | Nombre de la etiqueta (opcional)    |
+| `color` | `string` | Color de la etiqueta (opcional)     |
+
+#### Parámetros:
+
+- `id`: ID de la etiqueta a actualizar.
+
+---
+
+#### Eliminar Etiqueta
+
+- **Método:** `DELETE`
+- **Endpoint:** `/etiquetas/{id}`
+- **Descripción:** Elimina una etiqueta específica por su ID.
+
+#### Parámetros:
+
+- `id`: ID de la etiqueta a eliminar.
+
+
+
 
 ### 9. Reportes : 
 
