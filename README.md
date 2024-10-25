@@ -373,6 +373,153 @@ A continuación, se presenta la documentación de los endpoints de la API para l
 
 ---
 
+### 5. Etiquetas
+
+Funcionalidad para agregar etiquetas personalizadas a las actividades, facilitando su organización y búsqueda.
+
+#### Crear Etiqueta
+
+- **Método:** `POST`
+- **Endpoint:** `/etiquetas`
+- **Descripción:** Crea una nueva etiqueta personalizada.
+
+#### Campos para el Body:
+
+| Campo   | Tipo     | Descripción                          |
+|---------|----------|--------------------------------------|
+| `nombre`| `string` | Nombre de la etiqueta (requerido)   |
+| `color` | `string` | Color de la etiqueta (opcional, por defecto: `#000000`) |
+
+---
+
+#### Obtener Todas las Etiquetas
+
+- **Método:** `GET`
+- **Endpoint:** `/etiquetas`
+- **Descripción:** Obtiene todas las etiquetas personalizadas del usuario autenticado.
+
+#### Respuesta:
+
+- Retorna una lista de etiquetas del usuario.
+
+---
+
+#### Obtener Etiqueta por ID
+
+- **Método:** `GET`
+- **Endpoint:** `/etiquetas/{id}`
+- **Descripción:** Obtiene una etiqueta específica por su ID.
+
+#### Parámetros:
+
+- `id`: ID de la etiqueta a obtener.
+
+---
+
+#### Actualizar Etiqueta
+
+- **Método:** `PUT`
+- **Endpoint:** `/etiquetas/{id}`
+- **Descripción:** Actualiza una etiqueta específica por su ID.
+
+#### Campos para el Body:
+
+| Campo   | Tipo     | Descripción                          |
+|---------|----------|--------------------------------------|
+| `nombre`| `string` | Nombre de la etiqueta (opcional)    |
+| `color` | `string` | Color de la etiqueta (opcional)     |
+
+#### Parámetros:
+
+- `id`: ID de la etiqueta a actualizar.
+
+---
+
+#### Eliminar Etiqueta
+
+- **Método:** `DELETE`
+- **Endpoint:** `/etiquetas/{id}`
+- **Descripción:** Elimina una etiqueta específica por su ID.
+
+#### Parámetros:
+
+- `id`: ID de la etiqueta a eliminar.
+
+### 6. Categorías
+
+Funcionalidad para gestionar categorías que ayudan a organizar las actividades.
+
+#### Crear Categoría
+
+- **Método:** `POST`
+- **Endpoint:** `/categorias`
+- **Descripción:** Crea una nueva categoría.
+
+#### Campos para el Body:
+
+| Campo        | Tipo     | Descripción                                      |
+|--------------|----------|--------------------------------------------------|
+| `nombre`     | `string` | Nombre de la categoría (requerido)              |
+| `descripcion`| `string` | Descripción de la categoría (opcional)          |
+| `color`      | `string` | Color de la categoría (opcional, por defecto: `#000000`) |
+
+---
+
+#### Obtener Todas las Categorías
+
+- **Método:** `GET`
+- **Endpoint:** `/categorias`
+- **Descripción:** Obtiene todas las categorías del usuario autenticado.
+
+#### Respuesta:
+
+- Retorna una lista de categorías del usuario.
+
+---
+
+#### Obtener Categoría por ID
+
+- **Método:** `GET`
+- **Endpoint:** `/categorias/{id}`
+- **Descripción:** Obtiene una categoría específica por su ID.
+
+#### Parámetros:
+
+- `id`: ID de la categoría a obtener.
+
+---
+
+#### Actualizar Categoría
+
+- **Método:** `PUT`
+- **Endpoint:** `/categorias/{id}`
+- **Descripción:** Actualiza una categoría específica por su ID.
+
+#### Campos para el Body:
+
+| Campo        | Tipo     | Descripción                                      |
+|--------------|----------|--------------------------------------------------|
+| `nombre`     | `string` | Nombre de la categoría (opcional)                |
+| `descripcion`| `string` | Descripción de la categoría (opcional)          |
+| `color`      | `string` | Color de la categoría (opcional)                 |
+
+#### Parámetros:
+
+- `id`: ID de la categoría a actualizar.
+
+---
+
+#### Eliminar Categoría
+
+- **Método:** `DELETE`
+- **Endpoint:** `/categorias/{id}`
+- **Descripción:** Elimina una categoría específica por su ID.
+
+#### Parámetros:
+
+- `id`: ID de la categoría a eliminar.
+
+
 ### 7. hitos :
 
 A continuación, se presenta la documentación de los endpoints de la API para la gestión de hitos.
@@ -451,82 +598,85 @@ A continuación, se presenta la documentación de los endpoints de la API para l
 
 ---
 
-### 5. Etiquetas
+### 9. Estadisticas :
 
-Funcionalidad para agregar etiquetas personalizadas a las actividades, facilitando su organización y búsqueda.
+Funcionalidad para registrar y obtener estadísticas relacionadas con las actividades y objetivos de los usuarios.
 
-#### Crear Etiqueta
+#### Registrar Estadísticas
 
 - **Método:** `POST`
-- **Endpoint:** `/etiquetas`
-- **Descripción:** Crea una nueva etiqueta personalizada.
+- **Endpoint:** `/estadisticas`
+- **Descripción:** Registra estadísticas de un usuario, incluyendo actividades y objetivos completados.
 
 #### Campos para el Body:
 
-| Campo   | Tipo     | Descripción                          |
-|---------|----------|--------------------------------------|
-| `nombre`| `string` | Nombre de la etiqueta (requerido)   |
-| `color` | `string` | Color de la etiqueta (opcional, por defecto: `#000000`) |
+| Campo                         | Tipo     | Descripción                                            |
+|-------------------------------|----------|--------------------------------------------------------|
+| `fecha`                       | `date`   | Fecha de la estadística (requerido)                   |
+| `actividades_completadas`     | `number` | Cantidad de actividades completadas (por defecto: `0`) |
+| `objetivos_completados`       | `number` | Cantidad de objetivos completados (por defecto: `0`)   |
+| `tiempo_total_actividades`    | `number` | Tiempo total dedicado a actividades en minutos (por defecto: `0`) |
+| `distribucion_categorias`     | `array`  | Distribución del tiempo por categorías (opcional)     |
 
 ---
 
-#### Obtener Todas las Etiquetas
+#### Obtener Todas las Estadísticas
 
 - **Método:** `GET`
-- **Endpoint:** `/etiquetas`
-- **Descripción:** Obtiene todas las etiquetas personalizadas del usuario autenticado.
+- **Endpoint:** `/estadisticas`
+- **Descripción:** Obtiene todas las estadísticas de todos los usuarios.
 
 #### Respuesta:
 
-- Retorna una lista de etiquetas del usuario.
+- Retorna una lista de estadísticas de todos los usuarios.
 
 ---
 
-#### Obtener Etiqueta por ID
+#### Obtener Estadísticas por ID
 
 - **Método:** `GET`
-- **Endpoint:** `/etiquetas/{id}`
-- **Descripción:** Obtiene una etiqueta específica por su ID.
+- **Endpoint:** `/estadisticas/{id}`
+- **Descripción:** Obtiene las estadísticas específicas de un usuario por ID.
 
 #### Parámetros:
 
-- `id`: ID de la etiqueta a obtener.
+- `id`: ID de las estadísticas a obtener.
 
 ---
 
-#### Actualizar Etiqueta
+#### Actualizar Estadísticas
 
 - **Método:** `PUT`
-- **Endpoint:** `/etiquetas/{id}`
-- **Descripción:** Actualiza una etiqueta específica por su ID.
+- **Endpoint:** `/estadisticas/{id}`
+- **Descripción:** Actualiza estadísticas específicas de un usuario por ID.
 
 #### Campos para el Body:
 
-| Campo   | Tipo     | Descripción                          |
-|---------|----------|--------------------------------------|
-| `nombre`| `string` | Nombre de la etiqueta (opcional)    |
-| `color` | `string` | Color de la etiqueta (opcional)     |
+| Campo                         | Tipo     | Descripción                                            |
+|-------------------------------|----------|--------------------------------------------------------|
+| `fecha`                       | `date`   | Fecha de la estadística (opcional)                    |
+| `actividades_completadas`     | `number` | Cantidad de actividades completadas (opcional)        |
+| `objetivos_completados`       | `number` | Cantidad de objetivos completados (opcional)          |
+| `tiempo_total_actividades`    | `number` | Tiempo total dedicado a actividades en minutos (opcional) |
+| `distribucion_categorias`     | `array`  | Distribución del tiempo por categorías (opcional)     |
 
 #### Parámetros:
 
-- `id`: ID de la etiqueta a actualizar.
+- `id`: ID de las estadísticas a actualizar.
 
 ---
 
-#### Eliminar Etiqueta
+#### Eliminar Estadísticas
 
 - **Método:** `DELETE`
-- **Endpoint:** `/etiquetas/{id}`
-- **Descripción:** Elimina una etiqueta específica por su ID.
+- **Endpoint:** `/estadisticas/{id}`
+- **Descripción:** Elimina estadísticas específicas de un usuario por ID.
 
 #### Parámetros:
 
-- `id`: ID de la etiqueta a eliminar.
+- `id`: ID de las estadísticas a eliminar.
 
-
-
-
-### 9. Reportes : 
+### 10. Reportes : 
 
 #### Crear Reporte
 

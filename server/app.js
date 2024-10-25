@@ -24,6 +24,8 @@ const etiquetaRoutes = require("./routes/tagRoutes")
 
 const categoryRoutes = require("./routes/categoryRoutes")
 
+const statisticRoutes = require("./routes/statisticRoutes")
+
 //dbConnection
 connection();
 const app = express();
@@ -42,6 +44,7 @@ app.use('/api/actividades', activityRoutes);
 app.use("/api/objetivos", objetivoRoutes)
 app.use("/api/etiquetas", etiquetaRoutes)
 app.use("api/categorias", categoryRoutes)
+app.use("api/estadisticas", statisticRoutes)
 
 //start server
 
