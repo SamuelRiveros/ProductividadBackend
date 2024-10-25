@@ -1,6 +1,8 @@
 const Activity = require('../models/Activity');
 const { formatResponse } = require('../utils/responseFormatter');
 const { validationResult } = require('express-validator');
+const Category = require('../models/Category');
+const Tag = require('../models/Tag');
 
 const activityController = {
   // Crear una nueva actividad
@@ -33,7 +35,7 @@ const activityController = {
                 .populate('etiquetas', 'nombre color')
                 .populate('colaboradores', 'nombre apellido email')
                 .sort({ fecha_inicio: -1 });
-
+                console.log(actividades)
             return res.status(200).json(formatResponse(200,"Actividades recuperadas exitosamente", actividades));
         } catch (error) {
             console.error('Error al obtener actividades:', error);
